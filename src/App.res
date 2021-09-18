@@ -2,5 +2,5 @@
 
 @react.component
 let make = () => {
-  <div className="App"> {React.string("Todo List")} </div>
+  <div className="container"> <TodoList /> </div>
 }
