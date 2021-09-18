@@ -1,18 +1,24 @@
 {
-  "name": "rescript-project-template",
-  "version": "0.0.1",
+  "name": "rescript-react-crash-course-todo-list",
+  "reason": {
+    "react-jsx": 3
+  },
   "sources": {
-    "dir" : "src",
-    "subdirs" : true
+    "dir": "src",
+    "subdirs": true
   },
-  "package-specs": {
-    "module": "commonjs",
-    "in-source": true
-  },
-  "suffix": ".bs.js",
-  "bs-dependencies": [
+  "bsc-flags": ["-bs-super-errors"],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
   ],
-  "warnings": {
-    "error" : "+101"
+  "suffix": ".bs.js",
+  "namespace": true,
+  "gentypeconfig": {
+    "language": "typescript"
   },
+
+  "bs-dependencies": ["@rescript/react"]
 }
