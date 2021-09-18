@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as App$RescriptReactCrashCourseTodoList from "./App.bs.js";
+import * as App$MyResApp from "./App.bs.js";
 
 import './index.css';
 ;
@@ -11,7 +11,7 @@ import './index.css';
 var rootQuery = document.querySelector("#root");
 
 if (!(rootQuery == null)) {
-  ReactDom.render(React.createElement(App$RescriptReactCrashCourseTodoList.make, {}), rootQuery);
+  ReactDom.render(React.createElement(App$MyResApp.make, {}), rootQuery);
 }
 
 var rootQuery$1 = (rootQuery == null) ? undefined : Caml_option.some(rootQuery);

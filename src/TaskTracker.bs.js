@@ -5,7 +5,7 @@ import * as React from "react";
 import * as Task$MyResApp from "./Task.bs.js";
 import * as Button$MyResApp from "./Button.bs.js";
 
-function TodoList(Props) {
+function TaskTracker(Props) {
   var match = React.useState(function () {
         return Task$MyResApp.defaultTasks;
       });
@@ -49,7 +49,7 @@ function TodoList(Props) {
                     })));
 }
 
-var make = TodoList;
+var make = TaskTracker;
 
 export {
   make ,

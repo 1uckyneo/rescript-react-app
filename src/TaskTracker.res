@@ -4,11 +4,11 @@ let make = () => {
 
   let (todos, setTodos) = React.useState(() => Task.defaultTasks)
 
-  let add = task => setTodos(prevTodos => prevTodos->Array.concat([task]))
+  let addTask = task => setTodos(prevTodos => prevTodos->Array.concat([task]))
 
-  let delete = id => setTodos(prevTodos => prevTodos->Js.Array2.filter(task => task.id !== id))
+  let deleteTask = id => setTodos(prevTodos => prevTodos->Js.Array2.filter(task => task.id !== id))
 
-  let togglereminder = id =>
+  let toggleReminder = id =>
     setTodos(prevTodos =>
       prevTodos->Js.Array2.map(task => {
         if task.id === id {
@@ -24,9 +24,9 @@ let make = () => {
 
   <div className="todolist">
     <header className="header">
-      <h1> {React.string("TodoList")} </h1>
+      <h1> {React.string("Task Tracker")} </h1>
       <Button _type={Add}> {React.string("Add Task")} </Button>
     </header>
-    <ul> {React.array(todos->Js.Array2.map(task => <Task task={task} />))} </ul>
+    <ul> {React.array(todos->Js.Array2.map(task => <Task task toggleReminder deleteTask />))} </ul>
   </div>
 }
