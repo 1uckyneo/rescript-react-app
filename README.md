@@ -1,21 +1,24 @@
-# ReScript Project Template
+# ReScript & React TaskTracker App Demo
 
-The only official ReScript starter template.
+Learn ReScript & React with Building a TaskTracker App
 
 ## Installation
 
+This Project is based on Create React App
+
 ```sh
-npm install
+yarn
 ```
-
-## Build
-
-- Build: `npm run build`
-- Clean: `npm run clean`
-- Build & watch: `npm run start`
-
 ## Run
 
+let rescript cli keep things you write compiling to JavaScript
+
 ```sh
-node src/Demo.bs.js
+npm run watch
+```
+
+run the app with CRA
+
+```sh
+npm start
 ```
