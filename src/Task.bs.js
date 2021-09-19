@@ -29,14 +29,14 @@ function Task(Props) {
   var toggleReminder = Props.toggleReminder;
   var deleteTask = Props.deleteTask;
   var className = task.reminder ? "task reminder" : "task";
-  var onDoubleClick = function (param) {
+  var onDoubleClick = function ($$event) {
+    $$event.stopPropagation();
     return Curry._1(toggleReminder, task.id);
   };
   var onClick = function (param) {
     return Curry._1(deleteTask, task.id);
   };
   return React.createElement("div", {
-              key: task.id,
               onDoubleClick: onDoubleClick
             }, React.createElement("div", {
                   className: className

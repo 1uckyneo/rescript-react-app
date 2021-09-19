@@ -34,7 +34,8 @@ let make = (~task, ~toggleReminder, ~deleteTask) => {
     "task"
   }
 
-  let onDoubleClick = _ => {
+  let onDoubleClick = event => {
+    ReactEvent.Mouse.stopPropagation(event)
     toggleReminder(task.id)
   }
 
@@ -42,7 +43,7 @@ let make = (~task, ~toggleReminder, ~deleteTask) => {
     deleteTask(task.id)
   }
 
-  <div key={task.id} onDoubleClick>
+  <div onDoubleClick>
     <div className>
       <h3>
         {React.string(task.text)} <span className="fas" onClick> {React.string("x")} </span>
