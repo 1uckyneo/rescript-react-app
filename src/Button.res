@@ -1,13 +1,13 @@
-type btnType =
-  | Add
-  | Delete
-
 @react.component
-let make = (~children: React.element, ~_type: btnType) => {
-  let style = switch _type {
-  | Add => ReactDOM.Style.make(~backgroundColor="green", ())
-  | Delete => ReactDOM.Style.make(~backgroundColor="red", ())
+let make = (~children: React.element, ~color, ~onClick=?) => {
+  let style = ReactDOM.Style.make(~backgroundColor=color, ())
+
+  let onClick = _ => {
+    switch onClick {
+    | Some(onClick) => onClick()
+    | None => ()
+    }
   }
 
-  <button className="btn" style> children </button>
+  <button className="btn" style onClick> children </button>
 }

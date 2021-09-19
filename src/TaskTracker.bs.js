@@ -4,14 +4,24 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Task$MyResApp from "./Task.bs.js";
-import * as Button$MyResApp from "./Button.bs.js";
+import * as Header$MyResApp from "./Header.bs.js";
 import * as AddTask$MyResApp from "./AddTask.bs.js";
 
 function TaskTracker(Props) {
   var match = React.useState(function () {
+        return false;
+      });
+  var setShowAddTask = match[1];
+  var showAddTask = match[0];
+  var toogleShowAddTask = function (param) {
+    return Curry._1(setShowAddTask, (function (prev) {
+                  return !prev;
+                }));
+  };
+  var match$1 = React.useState(function () {
         return Task$MyResApp.defaultTasks;
       });
-  var setTodos = match[1];
+  var setTodos = match$1[1];
   var addTask = function (task) {
     return Curry._1(setTodos, (function (prevTodos) {
                   return Belt_Array.concat(prevTodos, [task]);
@@ -40,14 +50,13 @@ function TaskTracker(Props) {
                             });
                 }));
   };
-  return React.createElement("div", undefined, React.createElement("div", {
-                  className: "header"
-                }, React.createElement("h1", undefined, "Task Tracker"), React.createElement(Button$MyResApp.make, {
-                      children: "Add Task",
-                      type: /* Add */0
-                    })), React.createElement(AddTask$MyResApp.make, {
-                  addTask: addTask
-                }), React.createElement("div", undefined, match[0].map(function (task) {
+  return React.createElement("div", undefined, React.createElement(Header$MyResApp.make, {
+                  showAddTask: showAddTask,
+                  toogleShowAddTask: toogleShowAddTask,
+                  title: "Task Tracker"
+                }), showAddTask ? React.createElement(AddTask$MyResApp.make, {
+                    addTask: addTask
+                  }) : null, React.createElement("div", undefined, match$1[0].map(function (task) {
                       return React.createElement(Task$MyResApp.make, {
                                   task: task,
                                   toggleReminder: toggleReminder,

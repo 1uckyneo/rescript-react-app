@@ -2,6 +2,10 @@
 let make = () => {
   open Belt
 
+  let (showAddTask, setShowAddTask) = React.useState(() => false)
+
+  let toogleShowAddTask = () => setShowAddTask(prev => !prev)
+
   let (todos, setTodos) = React.useState(() => Task.defaultTasks)
 
   let addTask = task => setTodos(prevTodos => prevTodos->Array.concat([task]))
@@ -23,11 +27,12 @@ let make = () => {
     )
 
   <div>
-    <div className="header">
-      <h1> {React.string("Task Tracker")} </h1>
-      <Button _type={Add}> {React.string("Add Task")} </Button>
-    </div>
-    <AddTask addTask />
+    <Header title={"Task Tracker"} toogleShowAddTask showAddTask />
+    {if showAddTask {
+      <AddTask addTask />
+    } else {
+      React.null
+    }}
     <div>
       {React.array(
         todos->Js.Array2.map(task => <Task key={task.id} task toggleReminder deleteTask />),
